@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Connect 2 Farmer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="c2f logo.png" width="100px" height="100px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="cart.png" width="30px" height="30px" alt=""></a>
+                <img src="menu.png" class="menu-icon" onclick="menutoggle()">                
+            </div>
+        </div> 
+<!-- Example HTML for displaying the cart items -->
+
+<div class="small-container cart-page">
+  <table>
+      <thead>
+          <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+              <th>Remove</th>
+          </tr>
+      </thead>
+      <tbody id="cart-items">
+          <!-- Cart items will be dynamically injected here by JavaScript -->
+      </tbody>
+  </table>
+  <div id="cart-total">
+      Total: ₹<span id="total-price">0.00</span>
+  </div>
+  <button id="buy-now">Buy Now</button>
+</div>
+<br><br><br>
+
+
+<!------------footer--------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <img src="c2f logo.png">
+                <p>Our purpose is to promote sustainable, eco-friendly living by making authentic organic 
+                    products available at buyers' fingertips.</p>
+            </div>
+            <div class="footer-col-2">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="Copyright">© 2018 Connect 2 Farmer. All rights reserved. </p>
+
+    </div>
+</div>
+<!---------js for toggle menu------->
+<script>
+    var MenuItems= document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle(){
+        if(MenuItems.style.maxHeight =="0px")
+        {
+            MenuItems.style.maxHeight ="200px";
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+</script>
+<script>
+    // Function to render cart items and total price
+function renderCart() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartContainer = document.getElementById('cart-items');
+  const totalPriceElement = document.getElementById('total-price');
+
+  // Clear current cart display
+  cartContainer.innerHTML = '';
+
+  // Initialize total price
+  let totalPrice = 0;
+  cart.forEach(item => {
+    const subtotal = item.price * item.quantity; // Calculate subtotal
+    totalPrice += subtotal; // Add to total price
+
+    const cartRow = document.createElement('tr');
+    cartRow.innerHTML = `
+      <td>
+        <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px;">
+        ${item.name}
+      </td>
+      <td>
+        <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-id="${item.id}">
+      </td>
+      <td>₹${subtotal.toFixed(2)}</td>
+      <td>
+        <button class="delete-item" data-id="${item.id}">🗑️</button>
+      </td>
+    `;
+    
+    cartContainer.appendChild(cartRow);
+  });
+
+
+  // Update total price in the UI
+  totalPriceElement.textContent = totalPrice.toFixed(2); // Format to 2 decimal places
+
+  // Add event listeners for quantity input changes
+  document.querySelectorAll('.quantity-input').forEach(input => {
+    input.addEventListener('change', function() {
+      const productId = this.getAttribute('data-id');
+      const newQuantity = parseInt(this.value);
+      updateCartQuantity(productId, newQuantity);
+    });
+  });
+  
+  // Add event listeners to delete buttons
+  document.querySelectorAll('.delete-item').forEach(button => {
+    button.addEventListener('click', function() {
+      const productId = this.getAttribute('data-id');
+      removeFromCart(productId);
+    });
+  });
+}
+
+// Function to update product quantity in the cart
+function updateCartQuantity(productId, newQuantity) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Find the product in the cart and update its quantity
+  const product = cart.find(item => item.id === productId);
+  if (product && newQuantity > 0) {
+    product.quantity = newQuantity;
+  } else if (newQuantity <= 0) {
+    cart = cart.filter(item => item.id !== productId); // Remove product if quantity is 0 or less
+  }
+  
+  // Update localStorage with the new cart
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Re-render the cart UI
+  renderCart();
+}
+
+// Function to remove product from cart
+function removeFromCart(productId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  // Filter out the product with the matching id
+  cart = cart.filter(item => item.id !== productId);
+  
+  // Update localStorage with the new cart
+  localStorage.setItem('cart', JSON.stringify(cart));
+  // Handle Buy Now action
+document.getElementById('buy-now').addEventListener('click', function() {
+  alert('Proceeding to checkout...');
+  // Implement checkout functionality here
+});
+  // Re-render the cart UI
+  renderCart();
+}
+// Function to handle the Buy Now action
+document.getElementById('buy-now').addEventListener('click', function() {
+  alert('Proceeding to checkout...');
+  // Implement checkout functionality here
+});
+// Call renderCart to display items on page load
+renderCart();
+</script>
+</body>
+</html>

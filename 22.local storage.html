@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <style>
+        h1{
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+        .container{
+            border-radius: 2px;
+            border: 3px solid black;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 5%;
+        }
+        #name,#pswd,#email,#number,#dob{
+            display: block;
+            box-sizing:border-box;
+            width: 100%;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login Form</h1>
+        <div class="container">
+            <label for="name">User Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="pswd">Password:</label>
+            <input type="password" id="pswd" name="pswd"><br>
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email"><br>
+            <label for="number">Mobile No:</label><br>
+            <input type="number" id="number" name="number"><br>
+            <label for="dob">Date Of Birth:</label><br>
+            <input type="dob" id="dob" name="dob"><br>
+            <input type="submit" onclick="save()" style="margin-left: 25%;">
+            <input type="reset"style="margin-left: 20%;">
+        </div>
+    </form>
+    <script>
+        function save()
+        {
+            if (typeof(Storage) !== "undefined") 
+            {
+                var x=document.getElementById("name").value;
+                localStorage.setItem("f1",x);
+                var y=document.getElementById("pswd").value;
+                localStorage.setItem("p1",y);
+              //  localStorage.clear();
+              alert(x);
+            }
+
+        }
+    </script>
+</body>
+</html>

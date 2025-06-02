@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Connect 2 Farmer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="c2f logo.png" width="100px" height="100px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="cart.png" width="30px" height="30px" alt=""></a>
+                <img src="menu.png" class="menu-icon" onclick="menutoggle()">                
+            </div>
+        </div> 
+        <div class="container-1">
+            <a href="contact.html"><h1 style="text-align: center;">Contact Us</h1></a>
+            <br>
+            <br>
+            <p style="text-align: center; padding-left: 20%; padding-right: 20%; padding-top: 10px; padding-bottom: 0px;">We value our customers and the communities we call home.  We appreciate your questions, comments and feedback so we can better serve you.</p>
+            <br>
+            <p style="text-align: center;">Mail Us:<a href="mailto:Connect2farmer.in@gmail.com"><b>Connect2farmer.in@gmail.com</b></a></p>
+            
+            <br><br><br><br><br><br><br>
+            <br>
+        </div>
+<br>
+<!------------footer--------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <img src="c2f logo.png">
+                <p>Our purpose is to promote sustainable, eco-friendly living by making authentic organic 
+                    products available at buyers' fingertips.</p>
+            </div>
+            <div class="footer-col-2">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/Connect2Farmer/">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/connect2farmer/">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/channel/UCRjaShxk3vUgkJNKBjn5i8Q">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="Copyright">© 2018 Connect 2 Farmer. All rights reserved. </p>
+
+    </div>
+</div>
+<!---------js for toggle menu------->
+<script>
+    var MenuItems= document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle(){
+        if(MenuItems.style.maxHeight =="0px")
+        {
+            MenuItems.style.maxHeight ="200px";
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+</script>
+</body>
+</html>
