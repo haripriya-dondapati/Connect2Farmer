@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Seedling - Connect 2 Farmer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><img src="c2f logo.png" width="100px" height="100px"></a>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="cart.png" width="30px" height="30px" alt=""></a>
+                <img src="menu.png" class="menu-icon" onclick="menutoggle()">                
+            </div>
+        </div> 
+<!---------- single product details --------->
+<div class="small-container Single-product">
+    <div class="row">
+        <div class="col-2">
+            <img src="rose seedling.jpeg" width="100%" id="ProductImg">
+            </div>
+        <div class="col-2">
+            <div class="product-detail">
+                <p> Home / product</p>
+                <h2>Rose Seedling</h2>
+                <h4>Price: ₹10 per seedling</h4>
+                    <button class="btn"  data-id="29" data-name="Rose Seedling" data-price="100">Add to Cart</button>
+                    <br>
+                    <h3>Product Details <i class="fa fa-star"></i></h3>
+                    <p>Quality Organic Rose Seedling</p>
+                </div> 
+            </div>
+        </div>
+    </div>
+<!-------title--------->
+<div class="small-container">
+        <h2>Related Products</h2>
+</div>
+<!------related products-->
+<div class="small-container">
+    <div class="row">
+        <div class="col-4">
+            <a href="mirchi.html"><img src="mirchi seedling.jpeg"></a>
+            <a href="mirchi.html"><h4>Mirchi Seedling</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star-o" ></i>
+                </div>
+                <p>₹ 10</p>
+        </div>
+        <div class="col-4">
+            <a href="tomato.html"><img src="tomato seedling.webp"></a>
+            <a href="tomato.html"><h4>Tomato Seedling</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star-o" ></i>
+                </div>
+                <p>₹ 10</p>
+        </div>
+        <div class="col-4">
+            <a href="brinjal.html"><img src="brinjal seedling.jpeg"></a>
+            <a href="brinjal.html"><h4>Brinjal Seedling</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star-o" ></i>
+                </div>
+                <p>₹ 10</p>
+        </div>
+        <div class="col-4">
+            <a href="jasmine.html"><img src="jasmine seedling.jpeg"></a>
+            <a href="jasmine.html"><h4>Seedling</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star-o" ></i>
+                </div>
+                <p>₹ 10</p>
+        </div>
+    </div>
+</div>
+<!------------footer--------->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <img src="c2f logo.png">
+                <p>Our purpose is to promote sustainable, eco-friendly living by making authentic organic 
+                    products available at buyers' fingertips.</p>
+            </div>
+            <div class="footer-col-2">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="Copyright">© 2018 Connect 2 Farmer. All rights reserved. </p>
+
+    </div>
+</div>
+<!---------js for toggle menu------->
+<script>
+    var MenuItems= document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px"
+    function menutoggle(){
+        if(MenuItems.style.maxHeight =="0px")
+        {
+            MenuItems.style.maxHeight ="200px";
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+</script>
+<script>
+    // Add event listener for the Add to Cart button on the product details page
+    document.querySelector('.btn').addEventListener('click', function() {
+            const productId = this.getAttribute('data-id');
+            const productName = this.getAttribute('data-name');
+            const productPrice = this.getAttribute('data-price');
+            const productImage = document.getElementById('ProductImg').src; // Dynamically get the image src
+            
+            addToCart(productId, productName, productPrice, productImage);
+        });
+
+        // Function to add product to cart
+        function addToCart(productId, productName, productPrice, productImage) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Check if product already exists in the cart
+            const productExists = cart.find(item => item.id === productId);
+            
+            if (productExists) {
+                productExists.quantity += 1; // Increment quantity if the product is already in the cart
+            } else {
+                // Add new product to the cart
+                cart.push({ id: productId, name: productName, price: productPrice, image: productImage, quantity: 1 });
+            }
+            
+            // Update localStorage with the new cart
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            alert('Product added to cart!');
+        }
+</script>
+</body>
+</html>

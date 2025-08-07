@@ -1,0 +1,103 @@
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Cart Table */
+#cart-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+#cart-items th, #cart-items td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#cart-items th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+}
+
+#cart-items img {
+    width: 700px;
+    height: 700px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Product Name Cell */
+#cart-items td:first-child {
+    display: flex;
+    align-items: center;
+}
+
+/* Quantity Input */
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Delete Button */
+.delete-item {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #e74c3c;
+    margin-left: 70%;
+}
+/* Total Price */
+#cart-total {
+    font-size: 18px;
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Buy Now Button */
+#buy-now {
+    display: inline-block;
+    background-color: #5cb85c;
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    float: right;
+    margin-top: 10px;
+}
+
+#buy-now:hover {
+    background-color: #4cae4c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #cart-items {
+        font-size: 14px;
+    }
+
+    #cart-items img {
+        width: 40px;
+        height: 40px;
+    }
+
+    #buy-now {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+}
